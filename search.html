@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search</title>
+    <link rel="stylesheet" href="search.css" />
+  </head>
+  <body class="">
+    <div class="clock"></div>
+    <div class="main-title">
+      <img src="icon/icon-earth.png" alt="" />
+      <h1>Universe</h1>
+    </div>
+    <div class="search-bar">
+      <input type="text" name="search" value="https://andyxforce707.github.io/my_portfolio/portfolio/portfolio.html" />
+      <img src="icon/icon-search.png" alt="" title="search" />
+      <img class="delete" src="icon/icon-trash.png" alt="" title="clear input field" />
+    </div>
+
+    <!-- ABSOLUTE -->
+
+    <img src="icon/icon-setting1.png" alt="" class="setting" title="setting" />
+    <img src="icon/icon-add.png" alt="" class="add" title="add" />
+    <img src="icon/icon-hamburger.png" alt="" class="hamburger" title="open / close sidebar" />
+    <div class="shadow"></div>
+    <div class="sidebar">
+      <h3>Advanced Options</h3>
+      <ul>
+        <li>Account</li>
+        <li>Purchased Tool</li>
+        <li>Settings</li>
+        <li>Extenstion</li>
+        <li>Help</li>
+        <li>About Us</li>
+        <li>Developer Mode</li>
+        <li>Debug</li>
+        <li title="Check out my portfolio and everything I've been working all this time"><a class="link" href="https://andyxforce707.github.io/my_portfolio/portfolio/portfolio.html">My Portfolio</a></li>
+        <li title="Click to toggle Grayscale Mode">
+          <div class="mode">
+            <p>Grayscale Mode</p>
+            <b class="on-off">Off</b>
+          </div>
+        </li>
+      </ul>
+      <a href="#">Log Out</a>
+    </div>
+
+    <script>
+      const del = document.querySelector('.search-bar .delete');
+      const input = document.querySelector('.search-bar input');
+      const search = document.querySelector('.search-bar img');
+
+      del.onclick = function () {
+        input.value = '';
+      };
+      search.onclick = function () {
+        alert('This function still coming soon !');
+      };
+
+      const clock = document.querySelector('.clock');
+
+      function showTime() {
+        let time = new Date();
+        let hours = time.getHours();
+        let minutes = time.getMinutes();
+        let seconds = time.getSeconds();
+
+        if (seconds < 10) {
+          seconds = `0${seconds}`;
+        }
+        if (minutes < 10) {
+          minutes = `0${minutes}`;
+        }
+        if (hours < 10) {
+          hours = `0${hours}`;
+        }
+
+        clock.innerHTML = `<h1>${hours} : ${minutes} : ${seconds} </h1>`;
+      }
+
+      setInterval(showTime, 1000);
+      showTime();
+
+      const hamburger = document.querySelector('.hamburger');
+      const sidebar = document.querySelector('.sidebar');
+      hamburger.onclick = function () {
+        sidebar.classList.toggle('active');
+        hamburger.classList.toggle('active');
+        if (hamburger.classList.contains('active')) {
+          hamburger.src = 'icon/icon-back2.png';
+        } else {
+          hamburger.src = 'icon/icon-hamburger.png';
+        }
+      };
+
+      //
+
+      const grayscale = document.querySelector('.sidebar ul li:last-child');
+      const on_off = document.querySelector('.sidebar ul li:last-child .mode .on-off');
+      const univ = document.body;
+      grayscale.onclick = function () {
+        univ.classList.toggle('grayscale');
+        if (univ.classList.contains('grayscale')) {
+          univ.style.background = `gray`;
+          on_off.innerText = 'On';
+        } else {
+          univ.style.background = `url("img/bg.jpg")`;
+          univ.style.backgroundSize = `cover`;
+          univ.style.backgroundAttachment = `cover`;
+          univ.style.backgroundPosition = `center`;
+          univ.style.backgroundRepeat = `no-repeat`;
+          on_off.innerText = 'Off';
+        }
+      };
+    </script>
+  </body>
+</html>
